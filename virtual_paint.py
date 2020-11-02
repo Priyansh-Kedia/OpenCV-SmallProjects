@@ -22,6 +22,7 @@ while True:
         break
 
 # To be completed, drawing contours according to paint
+# Refer to this link https://youtu.be/WQeoO7MI0Bs?t=7452
 
 cap.release()
 cv.destroyAllWindows()
