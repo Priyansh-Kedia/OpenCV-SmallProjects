@@ -37,4 +37,5 @@ def getContours(image, copyImage):
             cv.putText(copyImage, objectShape, (x + (w//2), y + (h//2)),cv.FONT_HERSHEY_COMPLEX, 0.5, (0,0,0))
 
 
-    
+def detectColor(frame):
+    imageHSV = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
