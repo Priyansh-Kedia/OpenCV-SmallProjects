@@ -1,4 +1,5 @@
 import cv2 as cv
+from fns import *
 
 frameWidth = 640
 frameHeight = 480
@@ -8,12 +9,18 @@ cap.set(3, frameWidth)
 cap.set(4, frameHeight)
 cap.set(10, 110)
 
+colors = [
+    [28,50,65,90,202,179],
+]
+
 while True:
     success, frame = cap.read()
     cv.imshow("Frame", frame)
 
+    detectColor(frame, colors)
     if cv.waitKey(1) & 0xFF == ord('q'):
         break
 
 
+cap.release()
 cv.destroyAllWindows()

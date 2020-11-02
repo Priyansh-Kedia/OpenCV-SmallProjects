@@ -24,7 +24,12 @@ cv.createTrackbar(SAT_MAX, windowName, 255, 255, empty)
 cv.createTrackbar(VAL_MIN, windowName, 0, 255, empty)
 cv.createTrackbar(VAL_MAX, windowName, 255, 255, empty)
 
-while True:
+cap = cv.VideoCapture(0)
+success, image = cap.read()
+
+while success:
+    success, image = cap.read()
+    imageHSV = cv.cvtColor(image, cv.COLOR_BGR2HSV)
     h_min = cv.getTrackbarPos(HUE_MIN, windowName)
     h_max = cv.getTrackbarPos(HUE_MAX, windowName)
     s_min = cv.getTrackbarPos(SAT_MIN, windowName)
@@ -37,10 +42,12 @@ while True:
     
     mask = cv.inRange(imageHSV, lower, upper)
     imageResult = cv.bitwise_and(image, image, mask=mask)
+    cv.imshow("hsv",imageHSV)
     cv.imshow("mask", mask)
     cv.imshow("final image", imageResult)
     if cv.waitKey(1) & 0xFF == ord('q'):
         break
 
 
+cap.release()
 cv.destroyAllWindows()

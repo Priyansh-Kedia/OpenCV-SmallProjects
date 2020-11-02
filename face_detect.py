@@ -5,6 +5,8 @@ faceCascade = cv.CascadeClassifier("Resources/haarcascade_frontalface_default.xm
 image = cv.imread('lena.png')
 grayImage = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
 
+
+
 faces = faceCascade.detectMultiScale(grayImage, 1.1, 4)
 
 # Detect multiscale returns x, y , w and h of the face

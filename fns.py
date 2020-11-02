@@ -1,4 +1,5 @@
 import cv2 as cv
+import numpy as np
 
 def getContours(image, copyImage):
     """
@@ -37,5 +38,12 @@ def getContours(image, copyImage):
             cv.putText(copyImage, objectShape, (x + (w//2), y + (h//2)),cv.FONT_HERSHEY_COMPLEX, 0.5, (0,0,0))
 
 
-def detectColor(frame):
+def detectColor(frame, colors):
     imageHSV = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
+    print(colors[0])
+    for color in colors:
+        lower = np.array(color[0:3])
+        upper = np.array(color[3:6])
+        mask = cv.inRange(imageHSV, lower, upper)
+        cv.imshow("hsv", imageHSV)
+        cv.imshow("image", mask)
