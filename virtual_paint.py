@@ -21,6 +21,7 @@ while True:
     if cv.waitKey(1) & 0xFF == ord('q'):
         break
 
+# To be completed, drawing contours according to paint
 
 cap.release()
 cv.destroyAllWindows()
